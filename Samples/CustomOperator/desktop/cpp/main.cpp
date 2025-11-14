@@ -34,10 +34,7 @@ struct CommandLineInterpreter
             {
                 return GetModelPath(L"squeezenet_debug_one_output.onnx");
             }
-            else if (0 == _wcsicmp(L"relu", m_commandLineArgs[1].c_str()) || 0 == _wcsicmp(L"relu_gpu", m_commandLineArgs[1].c_str()))
-            {
-                return GetModelPath(L"relu.onnx");
-            }
+
 
         }
 
