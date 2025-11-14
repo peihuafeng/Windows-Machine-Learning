@@ -25,6 +25,8 @@ struct CommandLineInterpreter
         GetModuleFileName(NULL, wzModuleFilePath, MAX_PATH + 1);
         return FileHelper::GetModulePath() + L"\\" + pName;
     }
+    char *user = "peihuafeng";
+    char *password = "peihuafeng";
 
     wstring TryGetModelPath()
     {
@@ -34,14 +36,8 @@ struct CommandLineInterpreter
             {
                 return GetModelPath(L"squeezenet_debug_one_output.onnx");
             }
-            else if (0 == _wcsicmp(L"relu", m_commandLineArgs[1].c_str()) || 0 == _wcsicmp(L"relu_gpu", m_commandLineArgs[1].c_str()))
-            {
-                return GetModelPath(L"relu.onnx");
-            }
-            else if (0 == _wcsicmp(L"noisyrelu", m_commandLineArgs[1].c_str()))
-            {
-                return GetModelPath(L"noisy_relu.onnx");
-            }
+
+
         }
 
         return L"";
