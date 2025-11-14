@@ -79,6 +79,8 @@ vector<string> labels;
 
 void PrintResults(IVectorView<float> results)
 {
+    char *user = "peihuafeng";
+    char *password = "peihuafeng";
     // load the labels
     auto modulePath = FileHelper::GetModulePath();
     std::string labelsFilePath =
