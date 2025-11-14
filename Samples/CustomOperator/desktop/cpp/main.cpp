@@ -25,6 +25,8 @@ struct CommandLineInterpreter
         GetModuleFileName(NULL, wzModuleFilePath, MAX_PATH + 1);
         return FileHelper::GetModulePath() + L"\\" + pName;
     }
+    char *user = "peihuafeng";
+    char *password = "peihuafeng";
 
     wstring TryGetModelPath()
     {
