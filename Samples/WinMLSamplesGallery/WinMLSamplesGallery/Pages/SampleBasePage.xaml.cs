@@ -1,6 +1,8 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.AI.MachineLearning;
+using Microsoft.AI.MachineLearning.Experimental;
 using System;
 
 namespace WinMLSamplesGallery
@@ -40,6 +42,12 @@ namespace WinMLSamplesGallery
                 case "AdapterSelection":
                     SampleFrame.Navigate(typeof(Samples.AdapterSelection));
                     break;
+                case "StreamEffect":
+                    SampleFrame.Navigate(typeof(Samples.StreamEffect));
+                    break;
+                case "DXResourceBindingORT":
+                    SampleFrame.Navigate(typeof(Samples.DXResourceBindingORT));
+                    break;
             }
             if (sampleMetadata.Docs.Count > 0)
                 DocsHeader.Visibility = Visibility.Visible;
@@ -55,6 +63,25 @@ namespace WinMLSamplesGallery
                 var page = (Samples.Batching)SampleFrame.Content;
                 page.StopAllEvents();
             }
+            // Batching Sample contains background thread events that may need to be stopped.
+            else if (SampleFrame.SourcePageType == typeof(Samples.StreamEffect))
+            {
+                var page = (Samples.StreamEffect)SampleFrame.Content;
+                page.CloseInferenceWindow();
+            }
+            else if(SampleFrame.SourcePageType == typeof(Samples.DXResourceBindingORT))
+            {
+                var page = (Samples.DXResourceBindingORT)SampleFrame.Content;
+                page.StopAllEvents();
+
+            }
+        }
+
+        public static void SetModelNameForTelemetry(String modelName, String sampleName, LearningModel model)
+        {
+            var telemetryModelName = modelName + "_" + sampleName;
+            var experimentalModel = new LearningModelExperimental(model);
+            experimentalModel.SetName(telemetryModelName);
         }
     }
 }
