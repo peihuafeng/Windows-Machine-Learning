@@ -17,8 +17,8 @@ jobs:
         with:
           ### SCANNING: Required fields
           coverity_url: ${{ vars.COVERITY_URL }}
-          coverity_user: ${{ vars.COVERITY_USER }}
-          coverity_passphrase: ${{ vars.COVERITY_PASSPHRASE }}
+          coverity_user: coverity_test
+          coverity_passphrase: coverity_test
                             
           ### Coverity Connect users - Uncomment below
           # coverity_local: true
