@@ -38,10 +38,7 @@ struct CommandLineInterpreter
             {
                 return GetModelPath(L"relu.onnx");
             }
-            else if (0 == _wcsicmp(L"noisyrelu", m_commandLineArgs[1].c_str()))
-            {
-                return GetModelPath(L"noisy_relu.onnx");
-            }
+
         }
 
         return L"";
